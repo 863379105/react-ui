@@ -3,6 +3,8 @@ import React from 'react';
 import Button, {ButtonSize, ButtonType} from './components/Button/button';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
+import SubMenu from './components/Menu/subMenu';
+
 
 function App() {
   return (
@@ -28,11 +30,19 @@ function App() {
           <MenuItem>item1</MenuItem>
           <MenuItem>item2</MenuItem>
           <MenuItem>item3</MenuItem>
+          <SubMenu title='SubMenu'>
+            <MenuItem>item1</MenuItem>
+            <MenuItem>item2</MenuItem>
+          </SubMenu>
         </Menu>
         <Menu mode='vertical'>
           <MenuItem>item1</MenuItem>
           <MenuItem>item2</MenuItem>
           <MenuItem>item3</MenuItem>
+          <SubMenu title='SubMenu'>
+            <MenuItem>item1</MenuItem>
+            <MenuItem>item2</MenuItem>
+          </SubMenu>
         </Menu>
       </>
     </div>
