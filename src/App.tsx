@@ -26,7 +26,7 @@ function App() {
         <Button btnType={ButtonType.Link} disabled href="http://www.baidu.com">Disabled Link</Button>
       </>
       <>
-        <Menu>
+        <Menu onSelect={(index) => {alert(index)}}>
           <MenuItem>item1</MenuItem>
           <MenuItem>item2</MenuItem>
           <MenuItem>item3</MenuItem>
