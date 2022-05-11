@@ -67,6 +67,10 @@
   .sub-menu.menu-opened {
     display: block;
   }
+  .sub-menu.is-active{
+    color: $menu-item-active-color;
+    border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
+  }
 }
 .menu-horizontal {
   .menu-item {
