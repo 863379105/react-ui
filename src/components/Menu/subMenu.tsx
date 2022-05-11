@@ -4,7 +4,7 @@ import { MenuContext } from './menu'
 import { MenuItemProps } from './menuItem'
 
 interface SubMenuProps{
-  index?: number;
+  index?: string;
   title: string;
   className?: string;
   children: React.ReactNode;
@@ -26,7 +26,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
     'menu-item submenu-item',
     className,
     {
-      'is-active': context.index === index
+      'is-active': context.index.slice(0,1) === index
     }
   )
   
@@ -47,7 +47,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const clickEvents = context.mode === 'vertical' ? {
     onClick: handleClick
   } : {}
-  
+
   const hoverEvents = context.mode !== 'vertical' ? {
     onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true) },
     onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false) }
@@ -60,10 +60,10 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
         'menu-opened': menuOpen
       }
     )
-    const childrenComponent = React.Children.map(children, (child, index) => {
+    const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as React.FunctionComponentElement<MenuItemProps>
       if(childElement.type.displayName === 'MenuItem') {
-        return childElement;
+        return React.cloneElement(childElement, {index: `${index}-${i}`});
       } else {
         console.error("Waring: Menu has a child which is not a MenuItem component");
       }
